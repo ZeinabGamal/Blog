@@ -23,12 +23,14 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'Blog/templates/Blog')
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jrrqmr+_+8(uj#m(u*zuzq1i*b2$0a$gez6afadedl3s4qecu$'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'jrrqmr+_+8(uj#m(u*zuzq1i*b2$0a$gez6afadedl3s4qecu$')
+
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['zeinabblog.herokuapp.com','.zeinabblog.com']
 
 
 # Application definition
@@ -78,13 +80,16 @@ WSGI_APPLICATION = 'MySite.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    #'default': {
+     #   'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   # }
 }
 
-
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+#DATABASES['default']['CONN_MAX_AGE'] = 500
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
