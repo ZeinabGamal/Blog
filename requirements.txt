@@ -83,7 +83,6 @@ mistune
 mpmath
 msgpack-python
 multipledispatch
-navigator-updater
 nbconvert
 nbformat
 networkx
