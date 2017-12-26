@@ -131,7 +131,6 @@ pytest
 python-dateutil
 pytz
 PyWavelets
-pywin32
 PyYAML
 pyzmq
 QtAwesome
