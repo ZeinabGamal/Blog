@@ -18,7 +18,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 #About page
 class AboutView(TemplateView):
-    template_name = 'about.html'
+    template_name = 'Blog/about.html'
 
 #show list of posts 
 class PostListView(ListView):
